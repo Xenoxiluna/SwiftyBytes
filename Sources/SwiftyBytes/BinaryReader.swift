@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BinaryReader {
+public class BinaryReader {
     public private(set) var readIndex: Int
     let data: BinaryReadableData
   

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BinaryWriteer {
+public class BinaryWriter {
     public var writeIndex: Int
     public var data: BinaryWritableData
   

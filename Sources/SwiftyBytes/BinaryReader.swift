@@ -101,6 +101,12 @@ public class BinaryReader {
       return string
     }
     
+    public func readNullTerminatedStringTrimmed() throws -> String {
+      let string = try data.getNullTerminatedStringTrimmed(readIndex)
+      readIndex = readIndex + string.utf8.count
+      return string
+    }
+    
     public func readStringEncoded(_ data: BinaryReadableData) throws -> String {
       let string = try data.getStringEncoded(readIndex)
       readIndex = readIndex + string.utf8.count

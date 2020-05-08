@@ -105,6 +105,25 @@ public struct BinaryReadableData{
         }
     }
     
+    public func getNullTerminatedStringTrimmed(_ offset: Int) throws -> String {
+        var utf8 = UTF8()
+        var string = ""
+        var generator = try subData(offset, data.count - offset).data.makeIterator()
+
+        while true {
+            switch utf8.decode(&generator) {
+            case .scalarValue(let unicodeScalar) where unicodeScalar.value > 0:
+                string.append(String(unicodeScalar))
+            case .scalarValue(_)://\0 means end of string
+                return string.trimmingCharacters(in: .whitespacesAndNewlines)
+            case .emptyInput:
+                throw SwiftyBytesExceptions.StringConversionError
+            case .error:
+                throw SwiftyBytesExceptions.StringConversionError
+            }
+        }
+    }
+    
     public func getString(_ offset: Int, length: Int) throws -> String {
       var utf8 = UTF8()
       var string = ""

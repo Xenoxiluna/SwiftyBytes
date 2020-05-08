@@ -141,7 +141,7 @@ public struct BinaryReadableData{
       }
     }
     
-    public func getStringEncoded(_ offset: Int) throws -> String {
+    public func get7BitEncodedString(_ offset: Int) throws -> String {
         let stringLength = try get7BitEncodedInt(offset)
         let bytes = try subData(offset, stringLength + 1).data
       

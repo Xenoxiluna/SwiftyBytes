@@ -107,8 +107,8 @@ public class BinaryReader {
       return string
     }
     
-    public func readStringEncoded(_ data: BinaryReadableData) throws -> String {
-      let string = try data.getStringEncoded(readIndex)
+    public func read7BitEncodedString() throws -> String {
+      let string = try data.get7BitEncodedString(readIndex)
       readIndex = readIndex + string.utf8.count
       return string
     }

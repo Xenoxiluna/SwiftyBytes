@@ -86,6 +86,18 @@ public struct BinaryReadableData{
         return Double(bitPattern: uint)
     }
     
+    public func getBool(_ offset: Int) throws -> Bool {
+        let boolVal = try self.getUInt8(offset)
+        switch boolVal{
+        case 0:
+            return false
+        case 1:
+            return true
+        default:
+            throw SwiftyBytesExceptions.IncorrectValueType
+        }
+    }
+    
     public func getNullTerminatedString(_ offset: Int) throws -> String {
         var utf8 = UTF8()
         var string = ""

@@ -88,6 +88,12 @@ public class BinaryReader {
         readIndex = readIndex + MemoryLayout<Double>.size
         return value
     }
+    
+    public func readBool() throws -> Bool {
+        let value: Bool = try data.getBool(readIndex)
+        readIndex = readIndex + MemoryLayout<Bool>.size
+        return value
+    }
 
     public func readNullTerminatedString() throws -> String {
         let string = try data.getNullTerminatedString(readIndex)

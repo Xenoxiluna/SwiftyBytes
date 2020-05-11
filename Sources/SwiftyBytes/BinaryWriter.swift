@@ -92,6 +92,15 @@ public class BinaryWriter{
         }
     }
     
+    public func writeBool(_ bool: Bool) throws -> Bool {
+        if bool{
+            let _ = try self.writeUInt8(1)
+        }else{
+            let _ = try self.writeUInt8(0)
+        }
+        return true
+    }
+    
     public func writeNullTerminatedString(_ string: String, encoding: String.Encoding) throws -> Bool {
         let stringBytes = string.nullTerminated(using: encoding)
         if let dataBytes = stringBytes{

@@ -12,4 +12,5 @@ public enum SwiftyBytesExceptions: Error {
     case EndofDataError
     case StringConversionError
     case ArraySizeError
+    case IncorrectValueType
 }

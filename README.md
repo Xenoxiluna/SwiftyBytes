@@ -1,5 +1,5 @@
 # `SwiftyBytes`
-A binary file read/write library written in swift. It was created with the purpose of being able to somewhat easily read game data files. Its not that well though out, but you can use it if desired!
+A binary file read/write library written in swift. It was created with the purpose of being able to somewhat easily read game data files. Its not that well thought out, but you can use it if desired!
 
 ## Usage
 Write

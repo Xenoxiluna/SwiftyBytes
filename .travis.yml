@@ -1,6 +1,6 @@
 jobs:
   include:
-    - stage: test
+    - stage: Testing
       language: swift
       os: osx
       osx_image: xcode10.3 # Swift 5.0
@@ -9,7 +9,7 @@ jobs:
       - swift build
       - swift test --filter SwiftyBytesTests
       - swift build -c release # Check Release build 
-    - stage: test
+    - stage: Testing
       language: swift
       os: osx
       osx_image: xcode11.3 # Swift 5.1
@@ -18,7 +18,7 @@ jobs:
       - swift build
       - swift test --filter SwiftyBytesTests
       - swift build -c release # Check Release build 
-    - stage: test
+    - stage: Testing
       language: swift
       os: osx
       osx_image: xcode11.4 # Swift 5.2
@@ -27,10 +27,14 @@ jobs:
       - swift build
       - swift test --filter SwiftyBytesTests
       - swift build -c release # Check Release build 
-    - stage: test
+    - stage: Testing
       language: generic
       os: linux
       dist: bionic
+      arch:
+       - amd64
+       - arm64
+       - arm32
       env:
       - SWIFT_VERSION=5.0
       install:
@@ -40,10 +44,14 @@ jobs:
       - swift build
       - swift test --filter SwiftyBytesTests
       - swift build -c release # Check Release build 
-    - stage: test
+    - stage: Testing
       language: generic
       os: linux
       dist: bionic
+      arch:
+       - amd64
+       - arm64
+       - arm32
       env:
       - SWIFT_VERSION=5.1
       install:
@@ -53,10 +61,13 @@ jobs:
       - swift build
       - swift test --filter SwiftyBytesTests
       - swift build -c release # Check Release build 
-    - stage: test
+    - stage: Testing
       language: generic
       os: linux
       dist: bionic
+      arch:
+       - amd64
+       - arm64
       env:
       - SWIFT_VERSION=5.2
       install:
@@ -66,9 +77,4 @@ jobs:
       - swift build
       - swift test --filter SwiftyBytesTests
       - swift build -c release # Check Release build 
-    - stage: deploy
-      if: tag IS present
-      language: generic
-      os: osx
-      osx_image: xcode11.4
      

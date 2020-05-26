@@ -91,6 +91,29 @@ final class SwiftyBytesTests: XCTestCase {
         XCTAssertEqual(try reader.readUInt32(), 1337)
         XCTAssertEqual(try reader.readUInt8(), 255)
     }
+    
+    func testReadBit() throws{
+        var writeTest: BinaryWriter = BinaryWriter()
+        try writeTest.writeUInt8(14)
+        try writeTest.writeUInt8(15)
+
+        var readData: BinaryReadableData = BinaryReadableData(data: writeTest.data)
+        var reader: BinaryReader = BinaryReader(readData)
+        XCTAssertEqual(try reader.readBit(), 0)
+        XCTAssertEqual(try reader.readBit(), 1)
+        XCTAssertEqual(try reader.readBit(), 1)
+        XCTAssertEqual(try reader.readBit(), 1)
+        XCTAssertEqual(try reader.readBit(), 0)
+        XCTAssertEqual(try reader.readBit(), 0)
+        XCTAssertEqual(try reader.readBit(), 0)
+        XCTAssertEqual(try reader.readBit(), 0)
+        XCTAssertEqual(try reader.readUInt8(), 15)
+    }
+    
+    func testUInt8BitExtension() throws{
+        let testNum: UInt8 = 14
+        XCTAssertEqual(testNum.bits, [0,1,1,1,0,0,0,0])
+    }
 
     static var allTests = [
         ("testReadWrite7bitEncodedString", testReadWrite7bitEncodedString),
@@ -98,5 +121,7 @@ final class SwiftyBytesTests: XCTestCase {
         ("testReadWriteMixedString", testReadWriteMixedString),
         ("testReadWriteGeneric", testReadWriteGeneric),
         ("testReadWriteNullTerminated", testReadWriteNullTerminated),
+        ("testReadBit", testReadBit),
+        ("testUInt8BitExtension", testUInt8BitExtension),
     ]
 }

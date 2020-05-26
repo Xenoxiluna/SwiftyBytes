@@ -10,11 +10,13 @@ import Foundation
 
 public class BinaryReader {
     public private(set) var readIndex: Int
+    public private(set) var bitReadIndex: Int
     public let data: BinaryReadableData
   
-    public init(_ data: BinaryReadableData, readIndex: Int = 0) {
+    public init(_ data: BinaryReadableData, readIndex: Int = 0, bitReadIndex: Int = 0) {
         self.data = data
         self.readIndex = readIndex
+        self.bitReadIndex = bitReadIndex
     }
   
     public func readUInt8() throws -> UInt8 {
@@ -135,5 +137,17 @@ public class BinaryReader {
         let subdata: [UInt8] = try data.subData(readIndex, length)
         readIndex = readIndex + length
         return subdata
+    }
+    
+    // This still needs some work
+    public func readBit() throws -> UInt8 {
+        let value: UInt8 = try data.getBit(readIndex, bitReadIndex)
+        if(bitReadIndex != 7){
+            bitReadIndex = bitReadIndex + 1
+        }else{
+            bitReadIndex = 0
+            readIndex = readIndex + MemoryLayout<UInt8>.size
+        }
+        return value
     }
 }

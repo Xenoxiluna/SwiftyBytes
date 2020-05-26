@@ -195,4 +195,11 @@ public struct BinaryReadableData{
             throw SwiftyBytesExceptions.EndofDataError
         }
     }
+    
+    public func getBit(_ offset: Int, _ bitIndex: Int) throws -> UInt8{
+        guard offset < data.count else { throw SwiftyBytesExceptions.EndofDataError }
+        let byte = data[offset]
+        
+        return (byte >> bitIndex) & 1
+    }
 }

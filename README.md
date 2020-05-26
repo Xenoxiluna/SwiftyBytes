@@ -27,4 +27,3 @@ print("\(try reader.readUInt64())")
 ## License
 
 `SwiftyBytes` is licensed under the [MIT License](LICENSE)
-[

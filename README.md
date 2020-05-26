@@ -1,7 +1,7 @@
 # `SwiftyBytes`
 [![Swift 5.X](https://img.shields.io/badge/Swift-5.X-blue.svg)](https://developer.apple.com/swift/)
 [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](LICENSE)
-[![Build Status](https://travis-ci.org/Xenoxiluna/SwiftyBytes.svg?branch=master)]
+![Build Status](https://travis-ci.org/Xenoxiluna/SwiftyBytes.svg?branch=master)
 
 
 A binary file read/write library written in swift. It was created with the purpose of being able to somewhat easily read game data files. Its not that well thought out, but you can use it if desired!
@@ -27,3 +27,4 @@ print("\(try reader.readUInt64())")
 ## License
 
 `SwiftyBytes` is licensed under the [MIT License](LICENSE)
+[

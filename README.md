@@ -6,6 +6,8 @@
 
 A binary file read/write library written in swift. It was created with the purpose of being able to somewhat easily read game data files. Its not that well thought out, but you can use it if desired!
 
+#### NOTE: Currently this library uses Swifts Data component as opposed to an Array of UInt8's. This may e changed in a later version.
+
 ## Usage
 Write
 ```swift

@@ -50,7 +50,7 @@ extension UInt8 {
     }
     var bits: [UInt8] {
         var result : [UInt8] = []
-        var mask = UInt8(0b10000000)
+        var _ = UInt8(0b10000000)
         for i in 0..<8 {
             result.append((self >> i) & 1)
         }

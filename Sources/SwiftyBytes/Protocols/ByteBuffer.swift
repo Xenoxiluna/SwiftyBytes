@@ -197,12 +197,4 @@ extension ByteBuffer{
         
         return (byte >> bitIndex) & 1
     }
-    
-    private func fromByteArray<T>(_ value: [UInt8], _: T.Type) -> T {
-        return value.withUnsafeBufferPointer {
-            $0.baseAddress!.withMemoryRebound(to: T.self, capacity: 1) {
-                $0.pointee
-            }
-        }
-    }
 }

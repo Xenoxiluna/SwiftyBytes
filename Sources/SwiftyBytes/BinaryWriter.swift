@@ -114,7 +114,7 @@ public class BinaryWriter{
     
     public func writeFloat32(_ float32: Float32, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
-            let floatBytes = UInt32(littleEndian: float32.data.withUnsafeBytes { $0.pointee }).bigEndian.data
+            let floatBytes = UInt32(littleEndian: fromByteArray([UInt8](float32.data), UInt32.self)).bigEndian.data
             data.bytes.append(contentsOf: floatBytes)
         }else{
             let floatBytes = float32.data
@@ -126,7 +126,7 @@ public class BinaryWriter{
     
     public func writeFloat64(_ float64: Float64, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
-            let floatBytes = UInt64(littleEndian: float64.data.withUnsafeBytes { $0.pointee }).bigEndian.data
+            let floatBytes = UInt64(littleEndian: fromByteArray([UInt8](float64.data), UInt64.self)).bigEndian.data
             data.bytes.append(contentsOf: floatBytes)
         }else{
             let floatBytes = float64.data
@@ -137,7 +137,7 @@ public class BinaryWriter{
     }
     
     public func writeDouble(_ double: Double, bigEndian: Bool? = false) throws -> Bool {
-        try writeFloat64(double, bigEndian: bigEndian)
+        let _ = try writeFloat64(double, bigEndian: bigEndian)
         return true
     }
     

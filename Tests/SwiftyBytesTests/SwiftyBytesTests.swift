@@ -12,11 +12,11 @@ import XCTest
 final class SwiftyBytesTests: XCTestCase {
     func testReadWriteNullTerminated() throws{
         let writeTest: BinaryWriter = BinaryWriter()
-        try writeTest.writeNullTerminatedString("""
+        let _ = try writeTest.writeNullTerminatedString("""
         This is a test!
         This is a test!
         """, encoding: .utf8)
-        try writeTest.writeUInt16(1)
+        let _ = try writeTest.writeUInt16(1)
 
         let readData: BinaryData = writeTest.data
         let reader: BinaryReader = BinaryReader(readData)
@@ -29,7 +29,7 @@ final class SwiftyBytesTests: XCTestCase {
     
     func testReadWrite7bitEncodedString() throws{
         let writeTest: BinaryWriter = BinaryWriter()
-        try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
+        let _ = try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
 
         let readData: BinaryData = writeTest.data
         let reader: BinaryReader = BinaryReader(readData)
@@ -38,9 +38,9 @@ final class SwiftyBytesTests: XCTestCase {
     
     func testReadWrite7bitEncodedStringMulti() throws{
         let writeTest: BinaryWriter = BinaryWriter()
-        try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
-        try writeTest.write7BitEncodedString("", encoding: .utf8)
-        try writeTest.writeUInt64(866464616516564)
+        let _ = try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
+        let _ = try writeTest.write7BitEncodedString("", encoding: .utf8)
+        let _ = try writeTest.writeUInt64(866464616516564)
 
         let readData: BinaryData = writeTest.data
         let reader: BinaryReader = BinaryReader(readData)
@@ -51,9 +51,9 @@ final class SwiftyBytesTests: XCTestCase {
     
     func testReadWriteMixedString() throws{
         let writeTest: BinaryWriter = BinaryWriter()
-        try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
-        try writeTest.writeNullTerminatedString("This is my second test!", encoding: .utf8)
-        try writeTest.writeUInt64(866464616516564)
+        let _ = try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
+        let _ = try writeTest.writeNullTerminatedString("This is my second test!", encoding: .utf8)
+        let _ = try writeTest.writeUInt64(866464616516564)
 
         let readData: BinaryData = writeTest.data
         let reader: BinaryReader = BinaryReader(readData)
@@ -65,17 +65,17 @@ final class SwiftyBytesTests: XCTestCase {
     func testReadWriteGeneric() throws{
         //XCTAssertEqual(SwiftyBytes().text, "Hello, World!")
         let writeTest: BinaryWriter = BinaryWriter()
-        try writeTest.writeUInt32(1337)
-        try writeTest.writeString("""
+        let _ = try writeTest.writeUInt32(1337)
+        let _ = try writeTest.writeString("""
         This is a test!
         This is a test!
         This is a test!
         This is a test!
         This is a test!
         """, encoding: .utf8)
-        try writeTest.writeUInt16(12)
-        try writeTest.writeUInt32(1337)
-        try writeTest.writeUInt8(255)
+        let _ = try writeTest.writeUInt16(12)
+        let _ = try writeTest.writeUInt32(1337)
+        let _ = try writeTest.writeUInt8(255)
 
         let readData: BinaryData = writeTest.data
         let reader: BinaryReader = BinaryReader(readData)
@@ -94,11 +94,11 @@ final class SwiftyBytesTests: XCTestCase {
     
     func testReadWriteBit() throws{
         let writeTest: BinaryWriter = BinaryWriter()
-        try writeTest.writeUInt8(14)
-        try writeTest.writeBit(true, 0)
-        try writeTest.writeBit(true, 7)
+        let _ = try writeTest.writeUInt8(14)
+        let _ = try writeTest.writeBit(true, 0)
+        let _ = try writeTest.writeBit(true, 7)
         XCTAssertThrowsError(try writeTest.writeBit(false, 12))
-        try writeTest.writeUInt8(15)
+        let _ = try writeTest.writeUInt8(15)
 
         let readData: BinaryData = writeTest.data
         let reader: BinaryReader = BinaryReader(readData)
@@ -120,13 +120,13 @@ final class SwiftyBytesTests: XCTestCase {
     
     func testBigEndian() throws{
         let writeTest: BinaryWriter = BinaryWriter()
-        try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
-        try writeTest.writeUInt64(866464616516564, bigEndian: true)
-        try writeTest.writeUInt32(866464616, bigEndian: true)
-        try writeTest.writeUInt16(8664, bigEndian: true)
-        try writeTest.writeInt16(8664, bigEndian: true)
-        try writeTest.writeFloat64(8664.20, bigEndian: true)
-        try writeTest.writeFloat32(866.20, bigEndian: true)
+        let _ = try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
+        let _ = try writeTest.writeUInt64(866464616516564, bigEndian: true)
+        let _ = try writeTest.writeUInt32(866464616, bigEndian: true)
+        let _ = try writeTest.writeUInt16(8664, bigEndian: true)
+        let _ = try writeTest.writeInt16(8664, bigEndian: true)
+        let _ = try writeTest.writeFloat64(8664.20, bigEndian: true)
+        let _ = try writeTest.writeFloat32(866.20, bigEndian: true)
 
         let readData: BinaryData = writeTest.data
         let reader: BinaryReader = BinaryReader(readData)

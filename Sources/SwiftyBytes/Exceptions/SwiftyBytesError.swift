@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum SwiftyBytesExceptions: Error {
+public enum SwiftyBytesError: Error {
     case EndofDataError
     case StringConversionError
     case ArraySizeError

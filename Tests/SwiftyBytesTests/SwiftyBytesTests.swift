@@ -11,15 +11,15 @@ import XCTest
 
 final class SwiftyBytesTests: XCTestCase {
     func testReadWriteNullTerminated() throws{
-        var writeTest: BinaryWriter = BinaryWriter()
+        let writeTest: BinaryWriter = BinaryWriter()
         try writeTest.writeNullTerminatedString("""
         This is a test!
         This is a test!
         """, encoding: .utf8)
         try writeTest.writeUInt16(1)
 
-        var readData: BinaryReadableData = BinaryReadableData(data: writeTest.data)
-        var reader: BinaryReader = BinaryReader(readData)
+        let readData: BinaryData = writeTest.data
+        let reader: BinaryReader = BinaryReader(readData)
         XCTAssertEqual(try reader.readNullTerminatedString(), """
         This is a test!
         This is a test!
@@ -28,35 +28,35 @@ final class SwiftyBytesTests: XCTestCase {
     }
     
     func testReadWrite7bitEncodedString() throws{
-        var writeTest: BinaryWriter = BinaryWriter()
+        let writeTest: BinaryWriter = BinaryWriter()
         try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
 
-        var readData: BinaryReadableData = BinaryReadableData(data: writeTest.data)
-        var reader: BinaryReader = BinaryReader(readData)
+        let readData: BinaryData = writeTest.data
+        let reader: BinaryReader = BinaryReader(readData)
         XCTAssertEqual(try reader.read7BitEncodedString(), "\u{f}This is a test!")
     }
     
     func testReadWrite7bitEncodedStringMulti() throws{
-        var writeTest: BinaryWriter = BinaryWriter()
+        let writeTest: BinaryWriter = BinaryWriter()
         try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
         try writeTest.write7BitEncodedString("", encoding: .utf8)
         try writeTest.writeUInt64(866464616516564)
 
-        var readData: BinaryReadableData = BinaryReadableData(data: writeTest.data)
-        var reader: BinaryReader = BinaryReader(readData)
+        let readData: BinaryData = writeTest.data
+        let reader: BinaryReader = BinaryReader(readData)
         XCTAssertEqual(try reader.read7BitEncodedString(), "\u{f}This is a test!")
         XCTAssertEqual(try reader.read7BitEncodedString(), "\u{0}")
         XCTAssertEqual(try reader.readUInt64(), 866464616516564)
     }
     
     func testReadWriteMixedString() throws{
-        var writeTest: BinaryWriter = BinaryWriter()
+        let writeTest: BinaryWriter = BinaryWriter()
         try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
         try writeTest.writeNullTerminatedString("This is my second test!", encoding: .utf8)
         try writeTest.writeUInt64(866464616516564)
 
-        var readData: BinaryReadableData = BinaryReadableData(data: writeTest.data)
-        var reader: BinaryReader = BinaryReader(readData)
+        let readData: BinaryData = writeTest.data
+        let reader: BinaryReader = BinaryReader(readData)
         XCTAssertEqual(try reader.read7BitEncodedString(), "\u{f}This is a test!")
         XCTAssertEqual(try reader.readNullTerminatedString(), "This is my second test!")
         XCTAssertEqual(try reader.readUInt64(), 866464616516564)
@@ -64,7 +64,7 @@ final class SwiftyBytesTests: XCTestCase {
     
     func testReadWriteGeneric() throws{
         //XCTAssertEqual(SwiftyBytes().text, "Hello, World!")
-        var writeTest: BinaryWriter = BinaryWriter()
+        let writeTest: BinaryWriter = BinaryWriter()
         try writeTest.writeUInt32(1337)
         try writeTest.writeString("""
         This is a test!
@@ -77,8 +77,8 @@ final class SwiftyBytesTests: XCTestCase {
         try writeTest.writeUInt32(1337)
         try writeTest.writeUInt8(255)
 
-        var readData: BinaryReadableData = BinaryReadableData(data: writeTest.data)
-        var reader: BinaryReader = BinaryReader(readData)
+        let readData: BinaryData = writeTest.data
+        let reader: BinaryReader = BinaryReader(readData)
         XCTAssertEqual(try reader.readUInt32(), 1337)
         XCTAssertEqual(try reader.readNullTerminatedStringTrimmed(), """
         This is a test!
@@ -93,15 +93,15 @@ final class SwiftyBytesTests: XCTestCase {
     }
     
     func testReadWriteBit() throws{
-        var writeTest: BinaryWriter = BinaryWriter()
+        let writeTest: BinaryWriter = BinaryWriter()
         try writeTest.writeUInt8(14)
         try writeTest.writeBit(true, 0)
         try writeTest.writeBit(true, 7)
         XCTAssertThrowsError(try writeTest.writeBit(false, 12))
         try writeTest.writeUInt8(15)
 
-        var readData: BinaryReadableData = BinaryReadableData(data: writeTest.data)
-        var reader: BinaryReader = BinaryReader(readData)
+        let readData: BinaryData = writeTest.data
+        let reader: BinaryReader = BinaryReader(readData)
         XCTAssertEqual(try reader.readBit(), 1)
         XCTAssertEqual(try reader.readBit(), 1)
         XCTAssertEqual(try reader.readBit(), 1)
@@ -117,6 +117,27 @@ final class SwiftyBytesTests: XCTestCase {
         let testNum: UInt8 = 14
         XCTAssertEqual(testNum.bits, [0,1,1,1,0,0,0,0])
     }
+    
+    func testBigEndian() throws{
+        let writeTest: BinaryWriter = BinaryWriter()
+        try writeTest.write7BitEncodedString("This is a test!", encoding: .utf8)
+        try writeTest.writeUInt64(866464616516564, bigEndian: true)
+        try writeTest.writeUInt32(866464616, bigEndian: true)
+        try writeTest.writeUInt16(8664, bigEndian: true)
+        try writeTest.writeInt16(8664, bigEndian: true)
+        try writeTest.writeFloat64(8664.20, bigEndian: true)
+        try writeTest.writeFloat32(866.20, bigEndian: true)
+
+        let readData: BinaryData = writeTest.data
+        let reader: BinaryReader = BinaryReader(readData)
+        XCTAssertEqual(try reader.read7BitEncodedString(), "\u{f}This is a test!")
+        XCTAssertEqual(try reader.readUInt64(true), 866464616516564)
+        XCTAssertEqual(try reader.readUInt32(true), 866464616)
+        XCTAssertEqual(try reader.readUInt16(true), 8664)
+        XCTAssertEqual(try reader.readInt16(true), 8664)
+        XCTAssertEqual(try reader.readFloat64(true), 8664.20)
+        XCTAssertEqual(try reader.readFloat32(true), 866.20)
+    }
 
     static var allTests = [
         ("testReadWrite7bitEncodedString", testReadWrite7bitEncodedString),
@@ -126,5 +147,6 @@ final class SwiftyBytesTests: XCTestCase {
         ("testReadWriteNullTerminated", testReadWriteNullTerminated),
         ("testReadWriteBit", testReadWriteBit),
         ("testUInt8BitExtension", testUInt8BitExtension),
+        ("testBigEndian", testBigEndian),
     ]
 }

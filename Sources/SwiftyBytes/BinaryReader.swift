@@ -11,9 +11,9 @@ import Foundation
 public class BinaryReader {
     public private(set) var readIndex: Int
     public private(set) var bitReadIndex: Int
-    public let data: BinaryReadableData
+    public let data: BinaryData
   
-    public init(_ data: BinaryReadableData, readIndex: Int = 0, bitReadIndex: Int = 0) {
+    public init(_ data: BinaryData, readIndex: Int = 0, bitReadIndex: Int = 0) {
         self.data = data
         self.readIndex = readIndex
         self.bitReadIndex = bitReadIndex
@@ -21,121 +21,115 @@ public class BinaryReader {
   
     public func readUInt8() throws -> UInt8 {
         let value: UInt8 = try data.getUInt8(readIndex)
-        readIndex = readIndex + MemoryLayout<UInt8>.size
+        readIndex += MemoryLayout<UInt8>.size
         return value
     }
   
     public func readInt8() throws -> Int8 {
         let value: Int8 = try data.getInt8(readIndex)
-        readIndex = readIndex + MemoryLayout<Int8>.size
+        readIndex += MemoryLayout<Int8>.size
         return value
     }
   
-    public func readUInt16() throws -> UInt16 {
-        let value: UInt16 = try data.getUInt16(readIndex)
-        readIndex = readIndex + MemoryLayout<UInt16>.size
+    public func readUInt16(_ bigEndian: Bool? = false) throws -> UInt16 {
+        let value: UInt16 = try data.getUInt16(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<UInt16>.size
         return value
     }
   
-    public func readInt16() throws -> Int16 {
-        let value: Int16 = try data.getInt16(readIndex)
-        readIndex = readIndex + MemoryLayout<Int16>.size
+    public func readInt16(_ bigEndian: Bool? = false) throws -> Int16 {
+        let value: Int16 = try data.getInt16(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<Int16>.size
         return value
     }
   
-    public func readUInt32() throws -> UInt32 {
-        let value: UInt32 = try data.getUInt32(readIndex)
-        readIndex = readIndex + MemoryLayout<UInt32>.size
+    public func readUInt32(_ bigEndian: Bool? = false) throws -> UInt32 {
+        let value: UInt32 = try data.getUInt32(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<UInt32>.size
         return value
     }
 
-    public func readInt32() throws -> Int32 {
-        let value: Int32 = try data.getInt32(readIndex)
-        readIndex = readIndex + MemoryLayout<Int32>.size
+    public func readInt32(_ bigEndian: Bool? = false) throws -> Int32 {
+        let value: Int32 = try data.getInt32(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<Int32>.size
         return value
     }
 
-    public func readUInt64() throws -> UInt64 {
-        let value: UInt64 = try data.getUInt64(readIndex)
-        readIndex = readIndex + MemoryLayout<UInt64>.size
+    public func readUInt64(_ bigEndian: Bool? = false) throws -> UInt64 {
+        let value: UInt64 = try data.getUInt64(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<UInt64>.size
         return value
     }
 
-    public func readInt64() throws -> Int64 {
-        let value: Int64 = try data.getInt64(readIndex)
-        readIndex = readIndex + MemoryLayout<Int64>.size
+    public func readInt64(_ bigEndian: Bool? = false) throws -> Int64 {
+        let value: Int64 = try data.getInt64(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<Int64>.size
         return value
     }
 
-    public func readFloat32() throws -> Float32 {
-        let value: Float32 = try data.getFloat32(readIndex)
-        readIndex = readIndex + MemoryLayout<Float32>.size
+    public func readFloat32(_ bigEndian: Bool? = false) throws -> Float32 {
+        let value: Float32 = try data.getFloat32(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<Float32>.size
         return value
     }
 
-    public func readFloat64() throws -> Float64 {
-        let value: Float64 = try data.getFloat64(readIndex)
-        readIndex = readIndex + MemoryLayout<Float64>.size
+    public func readFloat64(_ bigEndian: Bool? = false) throws -> Float64 {
+        let value: Float64 = try data.getFloat64(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<Float64>.size
         return value
     }
     
-    public func readFloat() throws -> Float {
-        let value: Float = try data.getFloat(readIndex)
-        readIndex = readIndex + MemoryLayout<Float>.size
+    public func readFloat(_ bigEndian: Bool? = false) throws -> Float {
+        let value: Float = try data.getFloat(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<Float>.size
         return value
     }
     
-    public func readDouble() throws -> Double {
-        let value: Double = try data.getDouble(readIndex)
-        readIndex = readIndex + MemoryLayout<Double>.size
+    public func readDouble(_ bigEndian: Bool? = false) throws -> Double {
+        let value: Double = try data.getDouble(readIndex, bigEndian: bigEndian)
+        readIndex += MemoryLayout<Double>.size
         return value
     }
     
     public func readBool() throws -> Bool {
         let value: Bool = try data.getBool(readIndex)
-        readIndex = readIndex + MemoryLayout<Bool>.size
+        readIndex += MemoryLayout<Bool>.size
         return value
     }
 
     public func readNullTerminatedString() throws -> String {
         let string = try data.getNullTerminatedString(readIndex)
-        readIndex = readIndex + string.utf8.count + 1//Add 1 for \0
+        readIndex += string.utf8.count + 1//Add 1 for \0
         return string
     }
     
     public func readNullTerminatedStringNoTrail() throws -> String {
       let string = try data.getNullTerminatedString(readIndex)
-      readIndex = readIndex + string.utf8.count
+      readIndex += string.utf8.count
       return string
     }
     
     public func readNullTerminatedStringTrimmed() throws -> String {
       let string = try data.getNullTerminatedStringTrimmed(readIndex)
-      readIndex = readIndex + string.utf8.count
+      readIndex += string.utf8.count
       return string
     }
     
     public func read7BitEncodedString() throws -> String {
       let string = try data.get7BitEncodedString(readIndex)
-      readIndex = readIndex + string.utf8.count
+      readIndex += string.utf8.count
       return string
     }
 
     public func readString(_ length: Int) throws -> String {
         let string = try data.getString(readIndex, length: length)
-        readIndex = readIndex + length
+        readIndex += length
         return string
-    }
-    
-    public func read(_ length: Int) throws -> BinaryReadableData {
-        let subdata: BinaryReadableData = try data.subData(readIndex, length)
-        readIndex = readIndex + length
-        return subdata
     }
     
     public func read(_ length: Int) throws -> [UInt8] {
         let subdata: [UInt8] = try data.subData(readIndex, length)
-        readIndex = readIndex + length
+        readIndex += length
         return subdata
     }
     
@@ -146,7 +140,7 @@ public class BinaryReader {
             bitReadIndex = bitReadIndex + 1
         }else{
             bitReadIndex = 0
-            readIndex = readIndex + MemoryLayout<UInt8>.size
+            readIndex += MemoryLayout<UInt8>.size
         }
         return value
     }

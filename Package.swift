@@ -1,11 +1,10 @@
 // swift-tools-version:5.0
-//
+
 //  Package.swift
 //  SwityBytes
 //
 //  Created by Quentin Berry on 5/6/20.
 //  Copyright © 2020 Quentin Berry. All rights reserved.
-//
 
 import PackageDescription
 

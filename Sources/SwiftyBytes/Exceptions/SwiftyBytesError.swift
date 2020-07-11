@@ -1,5 +1,5 @@
 //
-//  SwiftyBytesExceptions.swift
+//  SwiftyBytesError.swift
 //  SwityBytes
 //
 //  Created by Quentin Berry on 2/7/20.

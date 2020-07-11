@@ -1,6 +1,6 @@
 //
 //  StringExtensions.swift
-//  SwityBTest
+//  SwiftyBytes
 //
 //  Created by Quentin Berry on 5/8/20.
 //  Copyright © 2020 Quentin Berry. All rights reserved.

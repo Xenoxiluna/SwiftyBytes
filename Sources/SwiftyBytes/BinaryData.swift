@@ -1,5 +1,5 @@
 //
-//  BinaryReadableData.swift
+//  BinaryData.swift
 //  SwityBytes
 //
 //  Created by Quentin Berry on 2/7/20.
@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// This is a struct created for storing data
 public struct BinaryData: ByteBuffer{
     public var bytes: [UInt8] = []
     public var count: Int { get { return self.bytes.count }}

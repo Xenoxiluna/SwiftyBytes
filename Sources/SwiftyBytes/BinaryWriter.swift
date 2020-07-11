@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// This is a class created for writing data in a linear order
 public class BinaryWriter{
     public var data: BinaryData
     private(set) var writeIndex: Int = 0
@@ -25,14 +26,35 @@ public class BinaryWriter{
         self.data = BinaryData()
     }
     
-    // MARK: - WRITE
+    /**
+    Call this function to add the given UInt8 to the data array
+    - Parameters:
+     - uint : Number to write into the byte stream
     
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeUInt8(65)
+    ````
+    */
     public func writeUInt8(_ uint: UInt8) throws -> Bool {
         data.bytes.append(contentsOf: [uint])
         writeIndex += MemoryLayout<UInt8>.size
         return true
     }
     
+    /**
+    Call this function to add the given UInt16 to the data array
+    - Parameters:
+     - uint : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeUInt8(65)
+    ````
+    */
     public func writeUInt16(_ uint: UInt16, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
             let uintBytes = uint.bigEndian.data
@@ -45,6 +67,18 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given UInt32 to the data array
+    - Parameters:
+     - uint : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeUInt32(65)
+    ````
+    */
     public func writeUInt32(_ uint: UInt32, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
             let uintBytes = uint.bigEndian.data
@@ -57,6 +91,18 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given UInt64 to the data array
+    - Parameters:
+     - uint : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeUInt64(65)
+    ````
+    */
     public func writeUInt64(_ uint: UInt64, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
             let uintBytes = uint.bigEndian.data
@@ -69,6 +115,18 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given Int8 to the data array
+    - Parameters:
+     - int : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeInt8(65)
+    ````
+    */
     public func writeInt8(_ int: Int8) throws -> Bool {
         let intBytes = int.data
         data.bytes.append(contentsOf: intBytes)
@@ -76,6 +134,18 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given Int16 to the data array
+    - Parameters:
+     - int : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeInt16(65)
+    ````
+    */
     public func writeInt16(_ int: Int16, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
             let intBytes = int.bigEndian.data
@@ -88,6 +158,18 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given Int32 to the data array
+    - Parameters:
+     - int : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeInt32(65)
+    ````
+    */
     public func writeInt32(_ int: Int32, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
             let intBytes = int.bigEndian.data
@@ -100,6 +182,18 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given Int64 to the data array
+    - Parameters:
+     - int : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeInt64(65)
+    ````
+    */
     public func writeInt64(_ int: Int64, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
             let intBytes = int.bigEndian.data
@@ -112,6 +206,18 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given Float32 to the data array
+    - Parameters:
+     - float32 : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeFloat32(65)
+    ````
+    */
     public func writeFloat32(_ float32: Float32, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
             let floatBytes = UInt32(littleEndian: fromByteArray([UInt8](float32.data), UInt32.self)).bigEndian.data
@@ -124,6 +230,18 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given Float64 to the data array
+    - Parameters:
+     - float64 : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeFloat64(65)
+    ````
+    */
     public func writeFloat64(_ float64: Float64, bigEndian: Bool? = false) throws -> Bool {
         if bigEndian ?? false{
             let floatBytes = UInt64(littleEndian: fromByteArray([UInt8](float64.data), UInt64.self)).bigEndian.data
@@ -136,22 +254,34 @@ public class BinaryWriter{
         return true
     }
     
+    /**
+    Call this function to add the given Double to the data array
+    - Parameters:
+     - double : Number to write into the byte stream
+     - bigEndian: Boolean flag to format the inserted data as big endian or not.
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeDouble(65)
+    ````
+    */
     public func writeDouble(_ double: Double, bigEndian: Bool? = false) throws -> Bool {
         let _ = try writeFloat64(double, bigEndian: bigEndian)
         return true
     }
     
-    public func writeString(_ string: String, encoding: String.Encoding) throws -> Bool {
-        let stringBytes = string.data(using: encoding)
-        if let dataBytes = stringBytes{
-            data.bytes.append(contentsOf: dataBytes)
-            writeIndex += dataBytes.count
-            return true
-        }else{
-            throw SwiftyBytesError.StringConversionError
-        }
-    }
+    /**
+    Call this function to add the given Bool to the data array
+    - Parameters:
+     - bool : Boolean value to write into the byte stream
     
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeBool(true)
+    ````
+    */
     public func writeBool(_ bool: Bool) throws -> Bool {
         if bool{
             let _ = try self.writeUInt8(1)
@@ -162,8 +292,44 @@ public class BinaryWriter{
         return true
     }
     
-    public func writeNullTerminatedString(_ string: String, encoding: String.Encoding) throws -> Bool {
-        let stringBytes = string.nullTerminated(using: encoding)
+    /**
+    Call this function for storing a Length prefixed String into the data array
+    - Parameters:
+     - string : String to write into the byte stream
+     - encoding : String.Encoding value of the string
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeString("This is a test!", .ascii)
+    ````
+    */
+    public func writeString(_ string: String, _ encoding: String.Encoding) throws -> Bool {
+        let stringBytes = string.data(using: encoding)
+        if let dataBytes = stringBytes{
+            let strByteCount = dataBytes.count.data
+            data.bytes.append(contentsOf: strByteCount)
+            data.bytes.append(contentsOf: dataBytes)
+            writeIndex += dataBytes.count
+            return true
+        }else{
+            throw SwiftyBytesError.StringConversionError
+        }
+    }
+    
+     /**
+       Call this function for storing a string as Null Terminated UTF8 into the data array
+       - Parameters:
+        - string : String to write into the byte stream
+       
+       ### Usage Example: ###
+       ````
+       var writeTest: BinaryWriter = BinaryWriter()
+       try writeTest.writeNullTerminatedUTF8String("This is a test!")
+       ````
+    */
+    public func writeNullTerminatedUTF8String(_ string: String) throws -> Bool {
+        let stringBytes = string.nullTerminated(using: .utf8)
         if let dataBytes = stringBytes{
             data.bytes.append(contentsOf: dataBytes)
             writeIndex += dataBytes.count + 1
@@ -173,7 +339,19 @@ public class BinaryWriter{
         }
     }
     
-    public func write7BitEncodedString(_ string: String, encoding: String.Encoding) throws -> Bool {
+    /**
+    Call this function for storing a 7 bit encoded String into the data array
+    - Parameters:
+     - string : String to write into the byte stream
+     - encoding : String.Encoding value of the string
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.writeVariableLengthString("This is a test!", .ascii)
+    ````
+    */
+    public func writeVariableLengthString(_ string: String, _ encoding: String.Encoding) throws -> Bool {
         let stringLength = string.count
         Write7BitEncodedInt(Int32(stringLength))
         let stringBytes = string.data(using: encoding)
@@ -186,6 +364,17 @@ public class BinaryWriter{
         }
     }
     
+    /**
+    Call this function for storing a 7 bit encoded String into the data array
+    - Parameters:
+     - bytes : Bytes to write into the byte stream
+    
+    ### Usage Example: ###
+    ````
+    var writeTest: BinaryWriter = BinaryWriter()
+    try writeTest.write([0, 1, 3, 4])
+    ````
+    */
     public func write(_ bytes: [UInt8]) throws -> Bool {
         data.bytes.append(contentsOf: bytes)
         writeIndex = writeIndex + bytes.count

@@ -1,8 +1,9 @@
 //
-//  File.swift
-//  
+//  Conversion.swift
+//  SwiftyBytes
 //
 //  Created by Quentin Berry on 6/28/20.
+//  Copyright © 2020 Quentin Berry. All rights reserved.
 //
 
 import Foundation

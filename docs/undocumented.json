@@ -1,0 +1,159 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryData.swift",
+      "line": 13,
+      "symbol": "BinaryData.bytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryData.swift",
+      "line": 14,
+      "symbol": "BinaryData.count",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryData.swift",
+      "line": 16,
+      "symbol": "BinaryData.init(data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryData.swift",
+      "line": 20,
+      "symbol": "BinaryData.init(data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryData.swift",
+      "line": 24,
+      "symbol": "BinaryData.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryReader.swift",
+      "line": 13,
+      "symbol": "BinaryReader.readIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryReader.swift",
+      "line": 14,
+      "symbol": "BinaryReader.bitReadIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryReader.swift",
+      "line": 15,
+      "symbol": "BinaryReader.data",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryReader.swift",
+      "line": 17,
+      "symbol": "BinaryReader.init(_:readIndex:bitReadIndex:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryReader.swift",
+      "line": 340,
+      "symbol": "BinaryReader.readBit()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryWriter.swift",
+      "line": 13,
+      "symbol": "BinaryWriter.data",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryWriter.swift",
+      "line": 17,
+      "symbol": "BinaryWriter.init(data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryWriter.swift",
+      "line": 21,
+      "symbol": "BinaryWriter.init(data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryWriter.swift",
+      "line": 25,
+      "symbol": "BinaryWriter.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryWriter.swift",
+      "line": 384,
+      "symbol": "BinaryWriter.writeBit(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "line": 11,
+      "symbol": "SwiftyBytesError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "line": 12,
+      "symbol": "SwiftyBytesError.EndofDataError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "line": 13,
+      "symbol": "SwiftyBytesError.StringConversionError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "line": 14,
+      "symbol": "SwiftyBytesError.ArraySizeError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "line": 15,
+      "symbol": "SwiftyBytesError.IncorrectValueType",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Protocols/ByteBuffer.swift",
+      "line": 13,
+      "symbol": "ByteBuffer.bytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Protocols/ByteBuffer.swift",
+      "line": 14,
+      "symbol": "ByteBuffer.count",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes"
+}

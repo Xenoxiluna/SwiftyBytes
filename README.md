@@ -8,7 +8,6 @@
 A binary file read/write library written in swift. It was created with the purpose of being able to somewhat easily read game data files.
 
 #### NOTE: Currently this library uses Swifts Data component in some places. This may be changed in a later version.
-#### NOTE 2: big endian strings are not yet supported
 #### NOTE 3: writeString prefixes the length of the given string as a generic Int. This could cause compatibility issues on 32/64-bit systems
 
 ## Usage

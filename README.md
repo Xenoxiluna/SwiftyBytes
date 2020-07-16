@@ -30,8 +30,8 @@ Read: LittleEndian
 ```swift
 var readData: BinaryData = writeTest.data
 var reader: BinaryReader = BinaryReader(readData)
-print("\(try reader.readVariableLengthString())")
-print("\(try reader.readNullTerminatedString())")
+print("\(try reader.readVariableLengthString(.ascii))")
+print("\(try reader.readNullTerminatedString(.ascii))")
 print("\(try reader.readUInt64())")
 ```
 

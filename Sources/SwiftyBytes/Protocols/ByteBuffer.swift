@@ -357,7 +357,7 @@ extension ByteBuffer{
         if let str = String(bytes: bytes, encoding: encoding){
             return str
         }else{
-            return ""
+            throw SwiftyBytesError.StringConversionError
         }
     }
     
@@ -380,7 +380,7 @@ extension ByteBuffer{
         if let str = String(bytes: bytes, encoding: encoding){
             return str
         }else{
-            return ""
+            throw SwiftyBytesError.StringConversionError
         }
     }
     

@@ -59,13 +59,20 @@
     {
       "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryReader.swift",
       "line": 17,
-      "symbol": "BinaryReader.init(_:readIndex:bitReadIndex:)",
+      "symbol": "BinaryReader.init(_:_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryReader.swift",
-      "line": 340,
+      "line": 23,
+      "symbol": "BinaryReader.init(_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/BinaryReader.swift",
+      "line": 346,
       "symbol": "BinaryReader.readBit()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -106,35 +113,35 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Errors/SwiftyBytesError.swift",
       "line": 11,
       "symbol": "SwiftyBytesError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Errors/SwiftyBytesError.swift",
       "line": 12,
       "symbol": "SwiftyBytesError.EndofDataError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Errors/SwiftyBytesError.swift",
       "line": 13,
       "symbol": "SwiftyBytesError.StringConversionError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Errors/SwiftyBytesError.swift",
       "line": 14,
       "symbol": "SwiftyBytesError.ArraySizeError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Exceptions/SwiftyBytesError.swift",
+      "file": "/Users/Xenoxiluna1/Documents/GitHub/SwiftyBytes/Sources/SwiftyBytes/Errors/SwiftyBytesError.swift",
       "line": 15,
       "symbol": "SwiftyBytesError.IncorrectValueType",
       "symbol_kind": "source.lang.swift.decl.enumelement",

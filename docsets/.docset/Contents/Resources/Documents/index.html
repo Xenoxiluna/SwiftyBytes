@@ -13,7 +13,7 @@
     <a title="  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (72% documented)</p>
+        <p><a href="index.html"> Docs</a> (71% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -75,8 +75,7 @@
 <a href="https://travis-ci.org/Xenoxiluna/SwiftyBytes"><img src="https://travis-ci.org/Xenoxiluna/SwiftyBytes.svg?branch=master" alt="Build Status"></a></p>
 
 <p>A binary file read/write library written in swift. It was created with the purpose of being able to somewhat easily read game data files.</p>
-<h4 id='note-currently-this-library-uses-swifts-data-component-in-some-places-this-may-be-changed-in-a-later-version' class='heading'>NOTE: Currently this library uses Swifts Data component in some places. This may be changed in a later version.</h4>
-<h4 id='note-3-writestring-prefixes-the-length-of-the-given-string-as-a-generic-int-this-could-cause-compatibility-issues-on-32-64-bit-systems' class='heading'>NOTE 3: writeString prefixes the length of the given string as a generic Int. This could cause compatibility issues on 32/64-bit systems</h4>
+<h4 id='note-writestring-prefixes-the-length-of-the-given-string-as-a-generic-int-this-could-cause-compatibility-issues-on-32-64-bit-systems' class='heading'>NOTE: writeString prefixes the length of the given string as a generic Int. This could cause compatibility issues on 32/64-bit systems</h4>
 <h2 id='usage' class='heading'>Usage</h2>
 
 <p>Write: LittleEndian</p>
@@ -92,16 +91,14 @@
 </code></pre>
 
 <p>Read: LittleEndian</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">readData</span><span class="p">:</span> <span class="kt">BinaryData</span> <span class="o">=</span> <span class="n">writeTest</span><span class="o">.</span><span class="n">data</span>
-<span class="k">var</span> <span class="nv">reader</span><span class="p">:</span> <span class="kt">BinaryReader</span> <span class="o">=</span> <span class="kt">BinaryReader</span><span class="p">(</span><span class="n">readData</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="k">try</span> <span class="n">reader</span><span class="o">.</span><span class="nf">readVariableLengthString</span><span class="p">()</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="k">try</span> <span class="n">reader</span><span class="o">.</span><span class="nf">readNullTerminatedString</span><span class="p">()</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">reader</span><span class="p">:</span> <span class="kt">BinaryReader</span> <span class="o">=</span> <span class="kt">BinaryReader</span><span class="p">(</span><span class="n">writeTest</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="k">try</span> <span class="n">reader</span><span class="o">.</span><span class="nf">readVariableLengthString</span><span class="p">(</span><span class="o">.</span><span class="n">ascii</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="k">try</span> <span class="n">reader</span><span class="o">.</span><span class="nf">readNullTerminatedString</span><span class="p">(</span><span class="o">.</span><span class="n">ascii</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="k">try</span> <span class="n">reader</span><span class="o">.</span><span class="nf">readUInt64</span><span class="p">()</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
 </code></pre>
 
 <p>Read: BigEndian</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">readData</span><span class="p">:</span> <span class="kt">BinaryData</span> <span class="o">=</span> <span class="n">writeTest</span><span class="o">.</span><span class="n">data</span>
-<span class="k">var</span> <span class="nv">reader</span><span class="p">:</span> <span class="kt">BinaryReader</span> <span class="o">=</span> <span class="kt">BinaryReader</span><span class="p">(</span><span class="n">readData</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">reader</span><span class="p">:</span> <span class="kt">BinaryReader</span> <span class="o">=</span> <span class="kt">BinaryReader</span><span class="p">(</span><span class="n">writeTest</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="k">try</span> <span class="n">reader</span><span class="o">.</span><span class="nf">readUInt64</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
 </code></pre>
 <h2 id='license' class='heading'>License</h2>
@@ -111,7 +108,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-15)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-31)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

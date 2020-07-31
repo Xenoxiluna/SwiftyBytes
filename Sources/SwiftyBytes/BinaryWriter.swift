@@ -56,13 +56,8 @@ public class BinaryWriter{
     ````
     */
     public func writeUInt16(_ uint: UInt16, bigEndian: Bool? = false) throws -> Bool {
-        if bigEndian ?? false{
-            let uintBytes = uint.bigEndian.data
-            data.bytes.append(contentsOf: uintBytes)
-        }else{
-            let uintBytes = uint.data
-            data.bytes.append(contentsOf: uintBytes)
-        }
+        let uintBytes = bigEndian ?? false ? uint.bigEndian.data : uint.data
+        data.bytes.append(contentsOf: uintBytes)
         writeIndex += MemoryLayout<UInt16>.size
         return true
     }
@@ -80,13 +75,8 @@ public class BinaryWriter{
     ````
     */
     public func writeUInt32(_ uint: UInt32, bigEndian: Bool? = false) throws -> Bool {
-        if bigEndian ?? false{
-            let uintBytes = uint.bigEndian.data
-            data.bytes.append(contentsOf: uintBytes)
-        }else{
-            let uintBytes = uint.data
-            data.bytes.append(contentsOf: uintBytes)
-        }
+        let uintBytes = bigEndian ?? false ? uint.bigEndian.data : uint.data
+        data.bytes.append(contentsOf: uintBytes)
         writeIndex += MemoryLayout<UInt32>.size
         return true
     }
@@ -104,13 +94,8 @@ public class BinaryWriter{
     ````
     */
     public func writeUInt64(_ uint: UInt64, bigEndian: Bool? = false) throws -> Bool {
-        if bigEndian ?? false{
-            let uintBytes = uint.bigEndian.data
-            data.bytes.append(contentsOf: uintBytes)
-        }else{
-            let uintBytes = uint.data
-            data.bytes.append(contentsOf: uintBytes)
-        }
+        let uintBytes = bigEndian ?? false ? uint.bigEndian.data : uint.data
+        data.bytes.append(contentsOf: uintBytes)
         writeIndex += MemoryLayout<UInt64>.size
         return true
     }
@@ -147,13 +132,8 @@ public class BinaryWriter{
     ````
     */
     public func writeInt16(_ int: Int16, bigEndian: Bool? = false) throws -> Bool {
-        if bigEndian ?? false{
-            let intBytes = int.bigEndian.data
-            data.bytes.append(contentsOf: intBytes)
-        }else{
-            let intBytes = int.data
-            data.bytes.append(contentsOf: intBytes)
-        }
+        let intBytes = bigEndian ?? false ? int.bigEndian.data : int.data
+        data.bytes.append(contentsOf: intBytes)
         writeIndex += MemoryLayout<Int16>.size
         return true
     }
@@ -171,13 +151,8 @@ public class BinaryWriter{
     ````
     */
     public func writeInt32(_ int: Int32, bigEndian: Bool? = false) throws -> Bool {
-        if bigEndian ?? false{
-            let intBytes = int.bigEndian.data
-            data.bytes.append(contentsOf: intBytes)
-        }else{
-            let intBytes = int.data
-            data.bytes.append(contentsOf: intBytes)
-        }
+        let intBytes = bigEndian ?? false ? int.bigEndian.data : int.data
+        data.bytes.append(contentsOf: intBytes)
         writeIndex += MemoryLayout<Int32>.size
         return true
     }
@@ -195,13 +170,8 @@ public class BinaryWriter{
     ````
     */
     public func writeInt64(_ int: Int64, bigEndian: Bool? = false) throws -> Bool {
-        if bigEndian ?? false{
-            let intBytes = int.bigEndian.data
-            data.bytes.append(contentsOf: intBytes)
-        }else{
-            let intBytes = int.data
-            data.bytes.append(contentsOf: intBytes)
-        }
+        let intBytes = bigEndian ?? false ? int.bigEndian.data : int.data
+        data.bytes.append(contentsOf: intBytes)
         writeIndex += MemoryLayout<Int64>.size
         return true
     }

@@ -18,8 +18,7 @@ final class SwiftyBytesTests: XCTestCase {
         """)
         let _ = try writeTest.writeUInt16(1)
 
-        let readData: BinaryData = writeTest.data
-        let reader: BinaryReader = BinaryReader(readData)
+        let reader: BinaryReader = BinaryReader(writeTest.data)
         XCTAssertEqual(try reader.readNullTerminatedUTF8String(), """
         This is a test!
         This is a test!
@@ -31,8 +30,7 @@ final class SwiftyBytesTests: XCTestCase {
         let writeTest: BinaryWriter = BinaryWriter()
         let _ = try writeTest.writeVariableLengthString("This is a test!", .utf8)
 
-        let readData: BinaryData = writeTest.data
-        let reader: BinaryReader = BinaryReader(readData)
+        let reader: BinaryReader = BinaryReader(writeTest.data)
         XCTAssertEqual(try reader.readVariableLengthString(.utf8), "\u{f}This is a test!")
     }
     
@@ -42,8 +40,7 @@ final class SwiftyBytesTests: XCTestCase {
         let _ = try writeTest.writeVariableLengthString("", .utf8)
         let _ = try writeTest.writeUInt64(866464616516564)
 
-        let readData: BinaryData = writeTest.data
-        let reader: BinaryReader = BinaryReader(readData)
+        let reader: BinaryReader = BinaryReader(writeTest.data)
         XCTAssertEqual(try reader.readVariableLengthString(.utf8), "\u{f}This is a test!")
         XCTAssertEqual(try reader.readVariableLengthString(.utf8), "\u{0}")
         XCTAssertEqual(try reader.readUInt64(), 866464616516564)
@@ -60,9 +57,7 @@ final class SwiftyBytesTests: XCTestCase {
         let _ = try writeTest.writeUInt16(255)
         let _ = try writeTest.writeString("This is an ascii test!", .ascii)
 
-        let readData: BinaryData = writeTest.data
-        let reader: BinaryReader = BinaryReader(readData)
-        print(readData.bytes)
+        let reader: BinaryReader = BinaryReader(writeTest.data)
         XCTAssertEqual(try reader.readUInt32(), 1337)
         XCTAssertEqual(try reader.readString(.utf8), "This is a test!")
         XCTAssertEqual(try reader.readUInt16(), 12)
@@ -79,8 +74,7 @@ final class SwiftyBytesTests: XCTestCase {
         let _ = try writeTest.writeNullTerminatedUTF8String("This is my second test!")
         let _ = try writeTest.writeUInt64(866464616516564)
 
-        let readData: BinaryData = writeTest.data
-        let reader: BinaryReader = BinaryReader(readData)
+        let reader: BinaryReader = BinaryReader(writeTest.data)
         XCTAssertEqual(try reader.readVariableLengthString(.utf8), "\u{f}This is a test!")
         XCTAssertEqual(try reader.readNullTerminatedUTF8String(), "This is my second test!")
         XCTAssertEqual(try reader.readUInt64(), 866464616516564)
@@ -101,8 +95,7 @@ final class SwiftyBytesTests: XCTestCase {
         let _ = try writeTest.writeUInt32(1337)
         let _ = try writeTest.writeUInt8(255)
 
-        let readData: BinaryData = writeTest.data
-        let reader: BinaryReader = BinaryReader(readData)
+        let reader: BinaryReader = BinaryReader(writeTest.data)
         XCTAssertEqual(try reader.readUInt32(), 1337)
         XCTAssertEqual(try reader.readString(.utf8), """
         This is a test!
@@ -124,8 +117,7 @@ final class SwiftyBytesTests: XCTestCase {
         XCTAssertThrowsError(try writeTest.writeBit(false, 12))
         let _ = try writeTest.writeUInt8(15)
 
-        let readData: BinaryData = writeTest.data
-        let reader: BinaryReader = BinaryReader(readData)
+        let reader: BinaryReader = BinaryReader(writeTest.data)
         XCTAssertEqual(try reader.readBit(), 1)
         XCTAssertEqual(try reader.readBit(), 1)
         XCTAssertEqual(try reader.readBit(), 1)
@@ -152,8 +144,7 @@ final class SwiftyBytesTests: XCTestCase {
         let _ = try writeTest.writeFloat64(8664.20, bigEndian: true)
         let _ = try writeTest.writeFloat32(866.20, bigEndian: true)
 
-        let readData: BinaryData = writeTest.data
-        let reader: BinaryReader = BinaryReader(readData)
+        let reader: BinaryReader = BinaryReader(writeTest.data)
         XCTAssertEqual(try reader.readVariableLengthString(.utf8), "\u{f}This is a test!")
         XCTAssertEqual(try reader.readUInt64(true), 866464616516564)
         XCTAssertEqual(try reader.readUInt32(true), 866464616)

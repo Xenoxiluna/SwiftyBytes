@@ -14,8 +14,14 @@ public class BinaryReader {
     public private(set) var bitReadIndex: Int
     public let data: BinaryData
   
-    public init(_ data: BinaryData, readIndex: Int = 0, bitReadIndex: Int = 0) {
+    public init(_ data: BinaryData, _ readIndex: Int = 0, _ bitReadIndex: Int = 0) {
         self.data = data
+        self.readIndex = readIndex
+        self.bitReadIndex = bitReadIndex
+    }
+    
+    public init(_ data: [UInt8], _ readIndex: Int = 0, _ bitReadIndex: Int = 0) {
+        self.data = BinaryData(data: data)
         self.readIndex = readIndex
         self.bitReadIndex = bitReadIndex
     }

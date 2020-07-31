@@ -7,8 +7,7 @@
 
 A binary file read/write library written in swift. It was created with the purpose of being able to somewhat easily read game data files.
 
-#### NOTE: Currently this library uses Swifts Data component in some places. This may be changed in a later version.
-#### NOTE 2: writeString prefixes the length of the given string as a generic Int. This could cause compatibility issues on 32/64-bit systems
+#### NOTE: writeString prefixes the length of the given string as a generic Int. This could cause compatibility issues on 32/64-bit systems
 
 ## Usage
 Write: LittleEndian
@@ -28,8 +27,7 @@ try writeTest.writeUInt64(866464616516564, bigEndian: true)
 
 Read: LittleEndian
 ```swift
-var readData: BinaryData = writeTest.data
-var reader: BinaryReader = BinaryReader(readData)
+var reader: BinaryReader = BinaryReader(writeTest.data)
 print("\(try reader.readVariableLengthString(.ascii))")
 print("\(try reader.readNullTerminatedString(.ascii))")
 print("\(try reader.readUInt64())")
@@ -37,8 +35,7 @@ print("\(try reader.readUInt64())")
 
 Read: BigEndian
 ```swift
-var readData: BinaryData = writeTest.data
-var reader: BinaryReader = BinaryReader(readData)
+var reader: BinaryReader = BinaryReader(writeTest.data)
 print("\(try reader.readUInt64(true))")
 ```
 

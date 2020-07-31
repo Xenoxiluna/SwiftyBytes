@@ -354,11 +354,10 @@ extension ByteBuffer{
         let stringLength = try getInt(offset)
         let bytes = try subData(offset + MemoryLayout<Int>.size, stringLength)
       
-        if let str = String(bytes: bytes, encoding: encoding){
-            return str
-        }else{
+        guard let str = String(bytes: bytes, encoding: encoding) else {
             throw SwiftyBytesError.StringConversionError
         }
+        return str
     }
     
     /**
@@ -377,11 +376,10 @@ extension ByteBuffer{
         let stringLength = try get7BitEncodedInt(offset)
         let bytes = try subData(offset, stringLength + 1)
       
-        if let str = String(bytes: bytes, encoding: encoding){
-            return str
-        }else{
+        guard let str = String(bytes: bytes, encoding: encoding) else {
             throw SwiftyBytesError.StringConversionError
         }
+        return str
     }
     
     private func get7BitEncodedInt(_ offset: Int) throws -> Int {
@@ -418,11 +416,10 @@ extension ByteBuffer{
     ````
     */
     public func subData(_ offset: Int, _ length: Int) throws -> [UInt8] {
-        if offset >= 0 && offset <= bytes.count && length >= 0 && (offset + length) <= bytes.count {
-            return Array(bytes[offset..<(offset + length)])
-        } else {
+        guard offset >= 0 && offset <= bytes.count && length >= 0 && (offset + length) <= bytes.count else {
             throw SwiftyBytesError.EndofDataError
         }
+        return Array(bytes[offset..<(offset + length)])
     }
     
     /**

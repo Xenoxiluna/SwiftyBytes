@@ -19,7 +19,7 @@ public class BinaryWriter{
     }
     
     public init(data: Data) {
-        self.data = BinaryData(data: [UInt8](data))
+        self.data = BinaryData(data: data)
     }
     
     public init() {

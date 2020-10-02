@@ -38,7 +38,7 @@ public class BinaryReader {
     */
     public func readUInt8() throws -> UInt8 {
         let value: UInt8 = try data.getUInt8(readIndex)
-        readIndex += MemoryLayout<UInt8>.size
+        adv(MemoryLayout<UInt8>.size)
         return value
     }
   
@@ -54,7 +54,7 @@ public class BinaryReader {
     */
     public func readInt8() throws -> Int8 {
         let value: Int8 = try data.getInt8(readIndex)
-        readIndex += MemoryLayout<Int8>.size
+        adv(MemoryLayout<Int8>.size)
         return value
     }
   
@@ -72,7 +72,7 @@ public class BinaryReader {
     */
     public func readUInt16(_ bigEndian: Bool? = false) throws -> UInt16 {
         let value: UInt16 = try data.getUInt16(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<UInt16>.size
+        adv(MemoryLayout<UInt16>.size)
         return value
     }
   
@@ -90,7 +90,7 @@ public class BinaryReader {
     */
     public func readInt16(_ bigEndian: Bool? = false) throws -> Int16 {
         let value: Int16 = try data.getInt16(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<Int16>.size
+        adv(MemoryLayout<Int16>.size)
         return value
     }
   
@@ -108,7 +108,7 @@ public class BinaryReader {
     */
     public func readUInt32(_ bigEndian: Bool? = false) throws -> UInt32 {
         let value: UInt32 = try data.getUInt32(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<UInt32>.size
+        adv(MemoryLayout<UInt32>.size)
         return value
     }
 
@@ -126,7 +126,7 @@ public class BinaryReader {
     */
     public func readInt32(_ bigEndian: Bool? = false) throws -> Int32 {
         let value: Int32 = try data.getInt32(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<Int32>.size
+        adv(MemoryLayout<Int32>.size)
         return value
     }
 
@@ -144,7 +144,7 @@ public class BinaryReader {
     */
     public func readUInt64(_ bigEndian: Bool? = false) throws -> UInt64 {
         let value: UInt64 = try data.getUInt64(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<UInt64>.size
+        adv(MemoryLayout<UInt64>.size)
         return value
     }
 
@@ -162,7 +162,7 @@ public class BinaryReader {
     */
     public func readInt64(_ bigEndian: Bool? = false) throws -> Int64 {
         let value: Int64 = try data.getInt64(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<Int64>.size
+        adv(MemoryLayout<Int64>.size)
         return value
     }
 
@@ -180,7 +180,7 @@ public class BinaryReader {
     */
     public func readFloat32(_ bigEndian: Bool? = false) throws -> Float32 {
         let value: Float32 = try data.getFloat32(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<Float32>.size
+        adv(MemoryLayout<Float32>.size)
         return value
     }
 
@@ -198,7 +198,7 @@ public class BinaryReader {
     */
     public func readFloat64(_ bigEndian: Bool? = false) throws -> Float64 {
         let value: Float64 = try data.getFloat64(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<Float64>.size
+        adv(MemoryLayout<Float64>.size)
         return value
     }
     
@@ -216,7 +216,7 @@ public class BinaryReader {
     */
     public func readFloat(_ bigEndian: Bool? = false) throws -> Float {
         let value: Float = try data.getFloat(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<Float>.size
+        adv(MemoryLayout<Float>.size)
         return value
     }
     
@@ -234,7 +234,7 @@ public class BinaryReader {
     */
     public func readDouble(_ bigEndian: Bool? = false) throws -> Double {
         let value: Double = try data.getDouble(readIndex, bigEndian: bigEndian)
-        readIndex += MemoryLayout<Double>.size
+        adv(MemoryLayout<Double>.size)
         return value
     }
     
@@ -250,7 +250,7 @@ public class BinaryReader {
     */
     public func readBool() throws -> Bool {
         let value: Bool = try data.getBool(readIndex)
-        readIndex += MemoryLayout<Bool>.size
+        adv(MemoryLayout<Bool>.size)
         return value
     }
 
@@ -266,7 +266,7 @@ public class BinaryReader {
     */
     public func readNullTerminatedUTF8String() throws -> String {
         let string = try data.getNullTerminatedUTF8String(readIndex)
-        readIndex += string.utf8.count + 1//Add 1 for \0
+        adv(string.utf8.count + 1)//Add 1 for \0
         return string
     }
     
@@ -284,7 +284,7 @@ public class BinaryReader {
     */
     public func readVariableLengthString(_ encoding: String.Encoding) throws -> String {
         let string = try data.getVariableLengthString(readIndex, encoding)
-        readIndex += string.data(using: encoding)!.count
+        adv(string.data(using: encoding)!.count)
         return string
     }
 
@@ -302,7 +302,7 @@ public class BinaryReader {
     */
     public func readString(_ encoding: String.Encoding) throws -> String {
         let string = try data.getString(readIndex, encoding)
-        readIndex += MemoryLayout<Int>.size + string.data(using: encoding)!.count
+        adv(MemoryLayout<Int>.size + string.data(using: encoding)!.count)
         return string
     }
     
@@ -320,7 +320,7 @@ public class BinaryReader {
     */
     public func readUTF8String(_ length: Int) throws -> String {
         let string = try data.getUTF8String(readIndex, length: length)
-        readIndex += length
+        adv(length)
         return string
     }
     
@@ -338,7 +338,7 @@ public class BinaryReader {
     */
     public func read(_ length: Int) throws -> [UInt8] {
         let subdata: [UInt8] = try data.subData(readIndex, length)
-        readIndex += length
+        adv(length)
         return subdata
     }
     
@@ -349,8 +349,26 @@ public class BinaryReader {
             bitReadIndex = bitReadIndex + 1
         }else{
             bitReadIndex = 0
-            readIndex += MemoryLayout<UInt8>.size
+            adv(MemoryLayout<UInt8>.size)
         }
         return value
+    }
+    
+    /**
+    Call this function to move/advance the index forward by a certain amount
+    - Parameters:
+     - length : Length/Size to move the index
+    */
+    public func adv(_ length: Int){
+        readIndex += length
+    }
+    
+    /**
+    Call this function to jump to a specific position/index in the data array
+    - Parameters:
+     - position : Position/Index to jump to
+    */
+    public func jmp(_ position: Int){
+        readIndex = position
     }
 }

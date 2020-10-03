@@ -1,7 +1,7 @@
 # `SwiftyBytes`
 [![Swift 5.X](https://img.shields.io/badge/Swift-5.X-blue.svg)](https://developer.apple.com/swift/)
 [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](LICENSE)
-[![Docs](http://img.shields.io/badge/read_the-docs-2196f3.svg)](https://xenoxiluna.github.io/SwiftyBytes/index.html)
+[![Docs](http://img.shields.io/badge/read_the-docs-2196f3.svg)](https://xenoxiluna.github.io/SwiftyBytes/)
 [![Build Status](https://travis-ci.org/Xenoxiluna/SwiftyBytes.svg?branch=master)](https://travis-ci.org/Xenoxiluna/SwiftyBytes)
 
 

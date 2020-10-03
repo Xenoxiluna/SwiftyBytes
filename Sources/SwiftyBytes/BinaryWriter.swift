@@ -11,8 +11,8 @@ import Foundation
 /// This is a class created for writing data in a linear order
 public class BinaryWriter{
     public var data: BinaryData
-    private(set) var writeIndex: Int = 0
-    private(set) var writeBitIndex: Int = 0
+    public private(set) var writeIndex: Int = 0
+    public private(set) var writeBitIndex: Int = 0
     
     public init(data: [UInt8]) {
         self.data = BinaryData(data: data)
